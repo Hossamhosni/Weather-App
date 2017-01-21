@@ -1,0 +1,13 @@
+body {
+	font-family:"Josefin Sans",sans-serif;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+	background-color:#202020;
+	color:#fefefe;
+	font-size:120%;
+}
+h1 {
+	font-size:250%;
+	text-transform: uppercase;
+}
