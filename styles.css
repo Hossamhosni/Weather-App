@@ -4,7 +4,7 @@ body {
 	margin:0px;
 	padding:0px;
 	text-align:center;
-	background-color:#202020;
+	background-color:#060606;
 	color:#fefefe;
 	font-size:100%;
 }
@@ -35,6 +35,10 @@ i {
 }
 #weather {
 	margin-top:5%;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 5px;
+	padding:10px;
 }
 #description {
 	display:block;
