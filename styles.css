@@ -6,8 +6,36 @@ body {
 	background-color:#202020;
 	color:#fefefe;
 	font-size:140%;
+	margin-top:20%;
 }
 h1 {
 	font-size:250%;
 	text-transform: uppercase;
+}
+h2 {
+	display:inline;
+	font-size:170%;
+}
+#convert {
+	color:red;
+}
+#btn {
+	font-size:110%;
+	cursor: pointer;
+}
+#btn:hover {
+	color:red;
+}
+#weather {
+	margin-top:5%;
+}
+#description {
+	display:block;
+	margin-top:5%;
+}
+#toggle-off {
+	display:none;
+}
+.fa {
+	margin-left:10px;
 }

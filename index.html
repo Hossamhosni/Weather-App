@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Weather App</title>
+		<title>Local Weather App</title>
 		<meta charset="utf-8" />
 		<link href = "styles.css" type="text/css" rel="stylesheet" />
-		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
 		<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="http://websygen.github.io/owfont/css/owfont-regular.css" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 	</head>
 	<body>
 		<h1>Local Weather App</h1>
 		<div id="conainer">
 			<h2 id="city"></h2>
+			<div id = "weather">
+				<i class="fa fa-refresh fa-spin fa-3x fa-fw" id = "reload"></i>
+			</div>
 		</div>
 		<script
 		  src="https://code.jquery.com/jquery-3.1.1.js"
