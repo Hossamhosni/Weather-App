@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css?family=Josefin+Sans";
 body {
 	font-family:"Josefin Sans",sans-serif;
 	margin:0px;
@@ -5,16 +6,22 @@ body {
 	text-align:center;
 	background-color:#202020;
 	color:#fefefe;
-	font-size:140%;
-	margin-top:20%;
+	font-size:100%;
 }
 h1 {
-	font-size:250%;
+	font-size:300%;
 	text-transform: uppercase;
 }
 h2 {
 	display:inline;
-	font-size:170%;
+	font-size:180%;
+  margin:15px;
+}
+h2#time {
+	display:block;
+}
+i {
+	display:block;
 }
 #convert {
 	color:red;
@@ -38,4 +45,10 @@ h2 {
 }
 .fa {
 	margin-left:10px;
+}
+#cOrF {
+	color:white;
+}
+h2#temp {
+	width:100px;
 }
