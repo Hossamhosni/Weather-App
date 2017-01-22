@@ -1,64 +1,63 @@
-(function(){
+(function () {
 	"use strict";
 	var lat, lon, cityState, tempKelvin, tempCelsius, tempFahrenheit, humidity, description, icon;
 	var $Weather = $("#weather");
-	var callback = function() {
+	var callback = function () {
 		$.ajax({
-			url:"https://simple-weather.p.mashape.com/weatherdata?",
+			url: "https://simple-weather.p.mashape.com/weatherdata?",
 			headers: {
 				"X-Mashape-Key": "ASlvvienCDmshcxWF6e0ztOgSDN1p1FpF81jsn1TK5LnWSHKt6"
 			},
-			data:"lat="+ lat +"&lng="+ lon,
-			success:function(data) {
+			data: "lat=" + lat + "&lng=" + lon,
+			success: function (data) {
 				try {
-					var data = JSON.parse(data);
+					data = JSON.parse(data);
+					console.log(data);
+					document.getElementById("city").textContent = data.query.results.channel.location.city + ", " + data.query.results.channel.location.country.slice(0,2).toUpperCase();
 					var conditionCode = Number(data.query.results.channel.item.condition.code);
 					tempCelsius = data.query.results.channel.item.condition.temp;
-					tempFahrenheit = Math.round(tempCelsius * 9/5 + 32);
+					tempFahrenheit = Math.round(tempCelsius * 9 / 5 + 32);
 					humidity = data.query.results.channel.atmosphere.humidity;
 					description = data.query.results.channel.item.condition.text;
 					var icon = getThermometerIcon(tempCelsius);
-					$Weather.append("<i class='fa " +  icon + " fa-2x' aria-hidden='true'></i>")
+					$Weather.append("<i class='fa " +  icon + " fa-2x' aria-hidden='true'></i>");
 					$Weather.append("<h2 id = 'temp'> " + tempCelsius + " &deg; <span id = 'cOrF'> C</span> </h2>");
-					$Weather.append("<i class='fa fa-toggle-on fa-2x' id='toggle-on' aria-hidden='true'></i>")
+					$Weather.append("<i class='fa fa-toggle-on fa-2x' id='toggle-on' aria-hidden='true'></i>");
 					$Weather.append("<i class='fa fa-toggle-off fa-2x' id = 'toggle-off' aria-hidden='true'></i>");
 					$Weather.append("<h2 id= 'description'>" + description + "</h2>");
-					$Weather.append("<i class='owf " + getWeatherIcon(conditionCode) +" owf-5x'></i>");
-					$Weather.append("<h2 id='time'></h2>" )
+					$Weather.append("<i class='owf " + getWeatherIcon(conditionCode) + " owf-5x'></i>");
+					$Weather.append("<h2 id='time'></h2>");
 					document.getElementById("reload").style.display = "none";
 					clicks();
 					startTime();
-				}
-				catch (e) {
+				} catch (e) {
 					$Weather.append("<h2 id= 'description'>" + "Sorry, Couldn't find your Weather!" + "</h2>");
-					$Weather.append("<i class='fa fa-meh-o fa-4x' aria-hidden='true'></i>")
+					$Weather.append("<i class='fa fa-meh-o fa-4x' aria-hidden='true'></i>");
 					document.getElementById("reload").style.display = "none";
-				};
-			} ,
-			Error: function() {
+				}
+			},
+			Error: function () {
 				$Weather.append("<h2 id= 'description'>" + "Sorry, Couldn't find your data" + "</h2>");
 			}
 		});
-	}
+	};
 
 	//displays Time
 	function startTime() {
-    var today = new Date();
-    var h = today.getHours();
-    var m = today.getMinutes();
-    var s = today.getSeconds();
-    m = checkTime(m);
-    s = checkTime(s);
-		if (h > 11)
-		{
+	  var today = new Date(),
+        h = today.getHours(),
+        m = today.getMinutes(),
+        s = today.getSeconds();
+    	  m = checkTime(m);
+    	  s = checkTime(s);
+		if (h > 11) {
 			h -= 12;
 			h = checkTime(h);
 			document.getElementById('time').innerHTML =
-	    h + ":" + m + ":" + s + " PM";
-		}
-		else {
-	    document.getElementById('time').innerHTML =
-	    h + ":" + m + ":" + s + " AM";
+	    	h + ":" + m + ":" + s + " PM";
+		} else {
+			document.getElementById('time').innerHTML =
+			h + ":" + m + ":" + s + " AM";
 		}
     setTimeout(startTime, 1000);
 	}
@@ -72,11 +71,9 @@
 	$.getJSON("https://ipinfo.io",function(data) {
 	  lat  = data.loc.split(",")[0];
 		lon = data.loc.split(",")[1];
-	  cityState = data.city;
-		document.getElementById("city").textContent = cityState + ", " + data.country;
+		console.log(data);
 		callback();
 	});
-
 
 
 	//Function to control styling when toggling between Celsius and Fahrenheit
@@ -86,7 +83,7 @@
 			document.getElementById("toggle-off").style.display = "inline";
 			document.getElementById("temp").innerHTML = " " + tempFahrenheit + " &deg; " + "<span id='cOrF'> F </span>";
 		});
-		document.getElementById("toggle-off").addEventListener("click",function() {
+		document.getElementById("toggle-off").addEventListener("click",function () {
 			document.getElementById("toggle-off").style.display = "none";
 			document.getElementById("toggle-on").style.display = "inline";
 			document.getElementById("temp").innerHTML = " " + tempCelsius + " &deg; " + "<span id='cOrF'> C </span>";
@@ -149,109 +146,83 @@
 				break;
 			case	11:
 			case	12:
+			case	40:
 				return "owf-521";
 				break;
 			case	13:
-				return "owf";
-				break;
+				return "owf-600";
+				break
 			case	14:
-				return "owf";
+			case	42:
+				return "owf-620";
 				break;
 			case	15:
-				 return "owf";
-				 break;
 			case	16:
-				return "owf";
+			case	41:
+			case	43:
+				return "owf-602";
 				break;
 			case	17:
-				return "owf";
+				return "owf-622";
 				break;
 			case	18:
-				return "owf";
+				return "owf-611";
 				break;
 			case	19:
-				return "owf";
+				return "owf-761";
 				break;
 			case	20:
-				return "owf";
+				return "owf-741";
 				break;
 			case	21:
-				return "owf";
+				return "owf-721";
 				break;
 			case	22:
-				return "owf";
+				return "owf-711";
 				break;
 			case	23:
-				return "owf";
-				break;
 			case	24:
-				return "owf";
+				return "owf-955";
 				break;
 			case	25:
-				return "owf";
+				return "owf-903";
 				break;
 			case	26:
 				return "owf-804";
 				break;
 			case	27:
-				return "owf";
-				break;
 			case	28:
-				return "owf";
+				return "owf-802-" + dayOrNight;
 				break;
 			case	29:
-				return "owf";
-				break;
 			case	30:
-				return "owf";
+			case	44:
+				return "owf-801-" + dayOrNight;
 				break;
 			case	31:
-				return "owf";
-				break;
 			case	32:
 			case	36:
-				return "owf";
-				break;
 			case	33:
-				return "owf";
-				break;
 			case	34:
-				return "owf";
+				return "owf-800-" + dayOrNight;
 				break;
 			case	35:
-				return "owf";
+				return "owf-616";
 				break;
 			case	37:
 			case	38:
 			case	39:
-				return "owf";
-			case	40:
-			return "owf";
-			break;
-			case	41:
-				return "owf";
+				return "owf-211";
 				break;
-			case	42:
-				return "owf";
-				break;
-			case	43:
-				return "owf";
-				break;
-			case	44:
-			return "owf";
-			break;
 			case	45:
-				return "owf";
+			case	47:
+				return "owf-202";
 				break;
 			case	46:
-				return "owf";
+				return "owf-621";
 				break;
-			case	47:
-				return "owf";
-				break;
-			case	3200:
-				return "owf";
-				break;
+			default :
+				return;
 		}
 	};
 
