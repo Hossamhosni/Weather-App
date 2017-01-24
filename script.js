@@ -28,6 +28,11 @@
 					$Weather.append("<i class='owf " + getWeatherIcon(conditionCode) + " owf-5x'></i>");
 					$Weather.append("<h2 id='time'></h2>");
 					document.getElementById("reload").style.display = "none";
+				 	if (tempCelsius < 25) {
+						$("#temp").css("color","#34639e");
+					} else {
+						$("#temp").css("color","#d8223a");
+					}
 					clicks();
 					startTime();
 				} catch (e) {
@@ -117,110 +122,81 @@
 		switch (conditionCode) {
 			case	0	:
 				return "owf-900";
-				break;
 			case	1	:
 			 return "owf-901";
-			 break;
 			case	2	:
 				return "owf-902";
-				break;
 			case	3	:
 			  return "owf-212";
-			  break;
 			case	4	:
 				return "owf-211";
-				break;
 			case	5	:
 				return "owf-616";
-				break;
 			case	6	:
 			case	7	:
 				return "owf-612";
-				break;
 			case	8	:
 			case	9	:
 				return "owf-302";
-				break;
 			case	10:
 				return "owf-511";
-				break;
 			case	11:
 			case	12:
 			case	40:
 				return "owf-521";
-				break;
 			case	13:
 				return "owf-600";
-				break
 			case	14:
 			case	42:
 				return "owf-620";
-				break;
 			case	15:
 			case	16:
 			case	41:
 			case	43:
 				return "owf-602";
-				break;
 			case	17:
 				return "owf-622";
-				break;
 			case	18:
 				return "owf-611";
-				break;
 			case	19:
 				return "owf-761";
-				break;
 			case	20:
 				return "owf-741";
-				break;
 			case	21:
 				return "owf-721";
-				break;
 			case	22:
 				return "owf-711";
-				break;
 			case	23:
 			case	24:
 				return "owf-955";
-				break;
 			case	25:
 				return "owf-903";
-				break;
 			case	26:
 				return "owf-804";
-				break;
 			case	27:
 			case	28:
 				return "owf-802-" + dayOrNight;
-				break;
 			case	29:
 			case	30:
 			case	44:
 				return "owf-801-" + dayOrNight;
-				break;
 			case	31:
 			case	32:
 			case	36:
 			case	33:
 			case	34:
 				return "owf-800-" + dayOrNight;
-				break;
 			case	35:
 				return "owf-616";
-				break;
 			case	37:
 			case	38:
 			case	39:
 				return "owf-211";
-				break;
 			case	45:
 			case	47:
 				return "owf-202";
-				break;
 			case	46:
 				return "owf-621";
-				break;
 			default :
 				return;
 		}

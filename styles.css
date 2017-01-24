@@ -40,9 +40,9 @@ i {
 	border-radius: 5px;
 	padding:10px;
 }
-#description {
+#description, #time {
 	display:block;
-	margin-top:5%;
+	margin-top:3%;
 }
 #toggle-off {
 	display:none;
@@ -55,4 +55,7 @@ i {
 }
 h2#temp {
 	width:100px;
+}
+.owf {
+	margin-top:3%;
 }
